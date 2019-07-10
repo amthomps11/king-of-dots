@@ -1,6 +1,6 @@
 .arena {
-  width: 800px;
-  height: 800px;
+  width: 825px;
+  height: 825px;
   background-color: lightgrey;
   position: absolute;
 }
@@ -12,6 +12,21 @@
   border: solid black 1px;
   background-color: white;
   position: relative;
+  transition: top 0.1s, left 0.1s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
+}
+
+.enemy {
+}
+
+.bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: solid black 1px;
+  background-color: black;
+  position: absolute;
   transition: top 0.1s, left 0.1s;
   transition-timing-function: linear;
   background-repeat: no-repeat;
