@@ -19,4 +19,4 @@ setInterval(() => {
 
 const a = new Vector(300, 400);
 const b = new Vector(400, 500);
-console.log(a.calcDistance(b));
+//console.log(a.calcDistance(b));

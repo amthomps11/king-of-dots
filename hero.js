@@ -11,8 +11,9 @@ const Hero = function (attributes) {
   };
 
   this.loadGun = function (vector) {
-    const bullet = new Bullet({ x: this.x, y: this.y });
+    const bullet = new Bullet({ x: this.x, y: this.y});
     bullet.createBullet();
+    bullet.direction = vector;
     bullet.renderBullet();
     this.bullets.push(bullet);
   };
@@ -52,7 +53,7 @@ const Hero = function (attributes) {
   };
 };
 
-document.body.addEventListener('keydown', (evt) => {
+document.body.addEventListener('keydown', function(evt){
   const { keyCode } = evt;
   const arrowKeys = [37, 38, 39, 40];
   if (arrowKeys.includes(keyCode)) {
@@ -78,12 +79,8 @@ document.body.addEventListener('keydown', (evt) => {
   }
 });
 
-document.addEventListener('click', (evt) => {
+document.addEventListener('click', function(evt) {
   evt.preventDefault();
-  console.log(evt.screenX);
-  console.log(evt.screenY);
-
-  const mouseBullet = new Vector(screenX, screenY);
-
+  const mouseBullet = new Vector(evt.screenX, evt.screenY);
   mainChar.loadGun(mouseBullet);
 });

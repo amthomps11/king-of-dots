@@ -22,8 +22,8 @@ const Vector = function(x, y) {
 
   this.getUnitVectorTo = function(vector) {
     return new Vector(
-      (this.posX - vector.posX) / this.calcDistance(vector),
-      (this.posY - vector.posY) / this.calcDistance(vector)
+      (vector.posX - this.posX) / this.calcDistance(vector),
+      (vector.posY - this.posY) / this.calcDistance(vector)
     );
   };
 
