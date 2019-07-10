@@ -1,7 +1,7 @@
-let heroAttributes = { x: 100, y: 100 };
-let mainChar = new Hero(heroAttributes);
+const heroAttributes = { x: 100, y: 100 };
+const mainChar = new Hero(heroAttributes);
 
-let updateAllBulletPositions = function() {
+const updateAllBulletPositions = function() {
   for (let i = mainChar.bullets.length - 1; i >= 0; i--) {
     mainChar.bullets[i].updateBulletPosition();
     if (mainChar.bullets[i].y > 800) {
@@ -13,6 +13,10 @@ let updateAllBulletPositions = function() {
 
 mainChar.show();
 
-setInterval(function() {
+setInterval(() => {
   updateAllBulletPositions();
 }, 150);
+
+const a = new Vector(300, 400);
+const b = new Vector(400, 500);
+console.log(a.calcDistance(b));
