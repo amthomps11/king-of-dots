@@ -1,50 +1,51 @@
-const arena = document.querySelector('.arena');
-const Hero = function (attributes) {
+const arena = document.querySelector(".arena");
+const Hero = function(attributes) {
   this.x = attributes.x;
   this.y = attributes.y;
   this.divAt;
   this.bullets = [];
 
-  this.move = function () {
+  this.move = function() {
     this.divAt.style.top = `${this.y}px`;
     this.divAt.style.left = `${this.x}px`;
   };
 
-  this.loadGun = function (vector) {
+  this.loadGun = function(vector) {
     const bullet = new Bullet({ x: this.x, y: this.y });
+    console.log(bullet);
     bullet.createBullet();
     bullet.renderBullet();
     this.bullets.push(bullet);
   };
 
-  this.show = function () {
-    const tempDiv = document.createElement('DIV');
-    tempDiv.classList.add('hero');
+  this.show = function() {
+    const tempDiv = document.createElement("DIV");
+    tempDiv.classList.add("hero");
     tempDiv.style.top = `${this.y}px`;
     tempDiv.style.left = `${this.x}px`;
     this.divAt = tempDiv;
     arena.appendChild(this.divAt);
   };
 
-  this.moveDown = function () {
+  this.moveDown = function() {
     if (this.y + 20 < 800) {
       this.y += 20;
       this.move();
     }
   };
-  this.moveLeft = function () {
+  this.moveLeft = function() {
     if (this.x - 20 >= 0) {
       this.x -= 20;
       this.move();
     }
   };
-  this.moveRight = function () {
+  this.moveRight = function() {
     if (this.x + 20 <= 800) {
       this.x += 20;
       this.move();
     }
   };
-  this.moveUp = function () {
+  this.moveUp = function() {
     if (this.y - 20 >= 0) {
       this.y -= 20;
       this.move();
@@ -52,7 +53,7 @@ const Hero = function (attributes) {
   };
 };
 
-document.body.addEventListener('keydown', (evt) => {
+document.body.addEventListener("keydown", evt => {
   const { keyCode } = evt;
   const arrowKeys = [37, 38, 39, 40];
   if (arrowKeys.includes(keyCode)) {
@@ -78,7 +79,7 @@ document.body.addEventListener('keydown', (evt) => {
   }
 });
 
-document.addEventListener('click', (evt) => {
+document.addEventListener("click", evt => {
   evt.preventDefault();
   console.log(evt.screenX);
   console.log(evt.screenY);
