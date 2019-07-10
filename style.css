@@ -1,3 +1,6 @@
+body {
+  position: absolute;
+}
 .arena {
   width: 825px;
   height: 825px;
@@ -18,7 +21,6 @@
 }
 
 .enemy {
-  
 }
 
 .bullet {
@@ -28,6 +30,18 @@
   border: solid black 1px;
   background-color: black;
   position: absolute;
+  transition: top 0.5s, left 0.5s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
+}
+
+.dots {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid blue 1px;
+  background-color: white;
+  position: relative;
   transition: top 0.5s, left 0.5s;
   transition-timing-function: linear;
   background-repeat: no-repeat;
