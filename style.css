@@ -27,7 +27,7 @@
   border: solid black 1px;
   background-color: black;
   position: absolute;
-  transition: top 0.1s, left 0.1s;
+  transition: top 0.5s, left 0.5s;
   transition-timing-function: linear;
   background-repeat: no-repeat;
 }
