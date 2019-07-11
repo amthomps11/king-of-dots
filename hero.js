@@ -1,86 +1,43 @@
-const arena = document.querySelector('.arena');
-const Hero = function (attributes) {
-  this.x = attributes.x;
-  this.y = attributes.y;
-  this.divAt;
+const arena = document.querySelector(".arena");
+const Hero = function(positionVector) {
+  this.position = positionVector;
+  this.div;
   this.bullets = [];
 
-  this.move = function () {
-    this.divAt.style.top = `${this.y}px`;
-    this.divAt.style.left = `${this.x}px`;
+  this.createHero = function() {
+    const tempDiv = document.createElement("DIV");
+    tempDiv.classList.add("hero");
+    this.div = tempDiv;
+    arena.appendChild(this.div);
   };
 
-  this.loadGun = function (vector) {
-    const bullet = new Bullet({ x: this.x, y: this.y});
-    bullet.createBullet();
-    bullet.direction = vector;
-    bullet.renderBullet();
-    this.bullets.push(bullet);
+  this.renderHero = function() {
+    this.div.style.top = `${this.position.y}px`;
+    this.div.style.left = `${this.position.x}px`;
   };
 
-  this.show = function () {
-    const tempDiv = document.createElement('DIV');
-    tempDiv.classList.add('hero');
-    tempDiv.style.top = `${this.y}px`;
-    tempDiv.style.left = `${this.x}px`;
-    this.divAt = tempDiv;
-    arena.appendChild(this.divAt);
-  };
-
-  this.moveDown = function () {
-    if (this.y + 20 < 800) {
-      this.y += 20;
-      this.move();
+  this.moveDown = function() {
+    if (this.position.y + 10 < 800) {
+      this.position.y += 10;
+      this.renderHero();
     }
   };
-  this.moveLeft = function () {
-    if (this.x - 20 >= 0) {
-      this.x -= 20;
-      this.move();
+  this.moveLeft = function() {
+    if (this.position.x - 10 >= 0) {
+      this.position.x -= 10;
+      this.renderHero();
     }
   };
-  this.moveRight = function () {
-    if (this.x + 20 <= 800) {
-      this.x += 20;
-      this.move();
+  this.moveRight = function() {
+    if (this.position.x + 10 <= 800) {
+      this.position.x += 10;
+      this.renderHero();
     }
   };
-  this.moveUp = function () {
-    if (this.y - 20 >= 0) {
-      this.y -= 20;
-      this.move();
+  this.moveUp = function() {
+    if (this.position.y - 10 >= 0) {
+      this.position.y -= 10;
+      this.renderHero();
     }
   };
 };
-
-document.body.addEventListener('keydown', function(evt){
-  const { keyCode } = evt;
-  const arrowKeys = [37, 38, 39, 40];
-  if (arrowKeys.includes(keyCode)) {
-    evt.preventDefault();
-  }
-  switch (keyCode) {
-    case 37:
-    case 65:
-      mainChar.moveLeft();
-      break;
-    case 38:
-    case 87:
-      mainChar.moveUp();
-      break;
-    case 39:
-    case 68:
-      mainChar.moveRight();
-      break;
-    case 40:
-    case 83:
-      mainChar.moveDown();
-      break;
-  }
-});
-
-document.addEventListener('click', function(evt) {
-  evt.preventDefault();
-  const mouseBullet = new Vector(evt.screenX, evt.screenY);
-  mainChar.loadGun(mouseBullet);
-});

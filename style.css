@@ -2,8 +2,8 @@ body {
   position: absolute;
 }
 .arena {
-  width: 825px;
-  height: 825px;
+  width: 600px;
+  height: 600px;
   background-color: lightgrey;
   position: absolute;
 }
@@ -14,7 +14,7 @@ body {
   border-radius: 50%;
   border: solid black 1px;
   background-color: white;
-  position: relative;
+  position: absolute;
   transition: top 0.1s, left 0.1s;
   transition-timing-function: linear;
   background-repeat: no-repeat;
