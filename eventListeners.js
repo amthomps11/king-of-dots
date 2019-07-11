@@ -35,22 +35,13 @@ document.addEventListener("click", function(evt) {
   // console.log(tempDiv);
   // arena.appendChild(tempDiv);
 
-  let mousePos = new Vector(evt.clientX + 10, evt.clientY + 10);
-  const tempBullet = new Bullet(
-    new Vector(mainChar.position.x, mainChar.position.y)
+  let currentPos = new Vector(
+    mainChar.position.x + 10,
+    mainChar.position.y + 10
   );
+  let mousePos = new Vector(evt.clientX, evt.clientY);
+  const tempBullet = new Bullet(currentPos, mousePos);
   tempBullet.createBullet();
-  tempBullet.target = mousePos;
   mainChar.bullets.push(tempBullet);
-  // let targetVector = tempBullet.position.getUnitVectorTo(mousePos);
-  // tempBullet.createBullet();
-  // tempBullet.renderBullet();
-  // console.log(tempBullet.position);
-  // tempBullet.moveBullet(evt.clientX, evt.clientY);
-  // tempBullet.position.resetMagnitude();
-  // console.log(tempBullet.position);
-  // tempBullet.renderBullet();
-  // mainChar.bullets.push(tempBullet);
-
-  //   console.log(mainChar.bullets);
+  updateAllBulletPositions();
 });

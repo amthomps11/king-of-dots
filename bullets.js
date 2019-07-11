@@ -1,6 +1,7 @@
-const Bullet = function(posVector) {
+const Bullet = function(posVector, targetVector) {
   this.position = posVector;
-  this.target;
+  this.targetVector = targetVector;
+  this.direction = this.position.getUnitVectorTo(this.targetVector);
   this.div;
 
   this.createBullet = function() {
@@ -24,4 +25,28 @@ const Bullet = function(posVector) {
     this.position.x = x;
     this.position.y = y;
   };
+
+  this.getUniVectorToTarget = function() {
+    this.direction = posVector.getUniVectorTo(this.targetVector);
+  };
+};
+
+const updateAllBulletPositions = function() {
+  for (let i = mainChar.bullets.length - 1; i >= 0; i--) {
+    mainChar.bullets[i].renderBullet();
+    let bulletPos = mainChar.bullets[i].position;
+    let bulletTarget = mainChar.bullets[i].targetVector;
+    let bulletDirection = mainChar.bullets[i].direction;
+    bulletDirection.setMagnitude(100);
+    bulletPos = addTwoVectors(bulletPos, bulletDirection);
+    mainChar.bullets[i].updateBulletPosition(bulletPos);
+    let currentX = parseInt(getComputedStyle(mainChar.bullets[i].div).left);
+    let currentY = parseInt(getComputedStyle(mainChar.bullets[i].div).top);
+
+    if (currentX > 600 || currentX < 0 || currentY > 600 || currentY < 0) {
+      console.log();
+      arena.removeChild(mainChar.bullets[i].div);
+      mainChar.bullets.splice(i, 1);
+    }
+  }
 };

@@ -14,31 +14,34 @@ const Vector = function(x, y) {
   };
 
   this.getUnitVector = function() {
-    return new Vector(
-      this.x / this.calcMagnitude(),
-      this.y / this.calcMagnitude()
-    );
+    return new Vector(this.x / this.mag, this.y / this.mag);
   };
 
   this.getUnitVectorTo = function(vector) {
-    return new Vector(
+    let newVec = new Vector(
       (vector.x - this.x) / this.calcDistance(vector),
       (vector.y - this.y) / this.calcDistance(vector)
     );
+    return newVec;
   };
 
-  this.addVector = function(vector) {
+  this.addToCurrentVector = function(vector) {
     this.x += vector.x;
     this.y += vector.y;
   };
 
   this.setMagnitude = function(newMag) {
-    this.x = (this.x * newMag) / this.calcMagnitude();
-    this.y = (this.y * newMag) / this.calcMagnitude();
+    this.x = (this.x * newMag) / this.mag;
+    this.y = (this.y * newMag) / this.mag;
+    this.mag = newMag;
   };
 
   this.moveTo = function(vector) {
     this.x = vector.x;
     this.y = vector.y;
   };
+};
+
+const addTwoVectors = function(a, b) {
+  return new Vector(a.x + b.x, a.y + b.y);
 };
