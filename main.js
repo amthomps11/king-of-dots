@@ -6,7 +6,7 @@ mainChar.renderHero();
 
 const updateAllBulletPositions = function() {
   for (let i = mainChar.bullets.length - 1; i >= 0; i--) {
-    console.log(mainChar.bullets[i]);
+    // console.log(mainChar.bullets[i]);
     mainChar.bullets[i].renderBullet();
     mainChar.bullets[i].updateBulletPosition(mainChar.bullets[i].target);
     // if (mainChar.bullets[i].y > 800) {
