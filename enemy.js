@@ -1,6 +1,11 @@
 const Enemy = function(positionVector) {
   this.position = positionVector;
-  this.radius = 50 / 2;
+  this.centerPos = new Vector(
+    this.position.x + this.radius,
+    this.position.y + this.radius
+  );
+  this.centerPos;
+  this.radius = 25;
   this.div;
 
   this.createEnemy = function() {
@@ -16,18 +21,17 @@ const Enemy = function(positionVector) {
   };
 
   this.isShot = function(bullet) {
-    let bulletX = parseInt(getComputedStyle(bullet.div).left);
-    let bulletY = parseInt(getComputedStyle(bullet.div).top);
-    let enemyX = parseInt(getComputedStyle(this.div).left);
-    let enemyY = parseInt(getComputedStyle(this.div).top);
+    let bulletX = parseInt(getComputedStyle(bullet.div).left + bullet.radius);
+    let bulletY = parseInt(getComputedStyle(bullet.div).top + bullet.radius);
+    let enemyX = parseInt(getComputedStyle(this.div).left + this.radius);
+    let enemyY = parseInt(getComputedStyle(this.div).top + this.radius);
     let bulletCanvasVector = new Vector(bulletX, bulletY);
     let enemyCanvasVector = new Vector(enemyX, enemyY);
     let distanceToBullet = bulletCanvasVector.calcDistance(enemyCanvasVector);
-    if (distanceToBullet < bullet.radius + this.radius) {
+    if (distanceToBullet < this.radius + bullet.radius) {
       this.div.style.backgroundColor = "green";
+    } else {
+      this.div.style.backgroundColor = "red";
     }
-    // else {
-    //   this.div.style.backgroundColor = "red";
-    // }
   };
 };

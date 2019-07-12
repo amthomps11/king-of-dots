@@ -1,14 +1,28 @@
 const Bullet = function(posVector, targetVector) {
   this.position = posVector;
   this.targetVector = targetVector;
+  this.radius = 15;
+  this.centerPos = new Vector(
+    this.position.x + this.radius,
+    this.position.y + this.radius
+  );
   this.direction = this.position.getUnitVectorTo(this.targetVector);
   this.div;
-  this.radius = 5 / 2;
+
+  this.updateCenterPos = function() {
+    this.centerPos = new Vector(
+      this.position.x + this.radius,
+      this.position.y + this.radius
+    );
+  };
 
   this.createBullet = function() {
     const tempDiv = document.createElement("DIV");
     tempDiv.classList.add("bullet");
     this.div = tempDiv;
+    this.div.style.width = `${this.radius * 2}px`;
+    this.div.style.height = `${this.radius * 2}px`;
+
     this.renderBullet();
     arena.appendChild(this.div);
   };
@@ -20,6 +34,7 @@ const Bullet = function(posVector, targetVector) {
 
   this.updateBulletPosition = function(vector) {
     this.position = vector;
+    this.updateCenterPos();
   };
 
   this.moveBullet = function(x, y) {

@@ -1,8 +1,12 @@
 const Hero = function(positionVector) {
   this.position = positionVector;
+  this.centerPos = new Vector(
+    this.position.x + this.radius,
+    this.position.y + this.radius
+  );
   this.div;
   this.bullets = [];
-  this.radius = 25 / 2;
+  this.radius = 12.5;
 
   this.createHero = function() {
     const tempDiv = document.createElement("DIV");
@@ -16,27 +20,41 @@ const Hero = function(positionVector) {
     this.div.style.left = `${this.position.x}px`;
   };
 
+  this.updateCenterPos = function() {
+    this.centerPos = new Vector(
+      this.position.x + this.radius,
+      this.position.y + this.radius
+    );
+  };
+
   this.moveDown = function() {
     if (this.position.y + 10 < 800) {
       this.position.y += 10;
+      this.updateCenterPos();
       this.renderHero();
     }
   };
   this.moveLeft = function() {
     if (this.position.x - 10 >= 0) {
       this.position.x -= 10;
+      this.updateCenterPos();
+
       this.renderHero();
     }
   };
   this.moveRight = function() {
     if (this.position.x + 10 <= 800) {
       this.position.x += 10;
+      this.updateCenterPos();
+
       this.renderHero();
     }
   };
   this.moveUp = function() {
     if (this.position.y - 10 >= 0) {
       this.position.y -= 10;
+      this.updateCenterPos();
+
       this.renderHero();
     }
   };
