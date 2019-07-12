@@ -6,6 +6,7 @@ body {
   height: 600px;
   background-color: lightgrey;
   position: absolute;
+  z-index: 0;
 }
 
 .hero {
@@ -23,8 +24,8 @@ body {
 }
 
 .enemy {
-  width: 50px;
-  height: 50px;
+  /* width: 50px;
+  height: 50px; */
   border-radius: 50%;
   /* border: solid black 1px; */
   background-color: red;
@@ -43,11 +44,12 @@ body {
   /* border: solid  red 1px; */
   background-color: black;
   position: absolute;
-  transition: top 0.5s, left 0.5s;
+  transition: top 0.1s, left 0.1s;
   transition-timing-function: linear;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
+  z-index: -1;
 }
 
 .dots {

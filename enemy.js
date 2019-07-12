@@ -4,15 +4,25 @@ const Enemy = function(positionVector) {
     this.position.x + this.radius,
     this.position.y + this.radius
   );
-  this.centerPos;
+
   this.radius = 25;
   this.div;
 
   this.createEnemy = function() {
     const tempDiv = document.createElement("DIV");
     tempDiv.classList.add("enemy");
+    tempDiv.style.height = this.radius * 2 + "px";
+    tempDiv.style.width = this.radius * 2 + "px";
+
     this.div = tempDiv;
     arena.appendChild(this.div);
+  };
+
+  this.updateCenterPos = function() {
+    this.centerPos = new Vector(
+      this.position.x + this.radius,
+      this.position.y + this.radius
+    );
   };
 
   this.renderEnemy = function() {

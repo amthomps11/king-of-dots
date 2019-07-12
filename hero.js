@@ -1,8 +1,8 @@
 const Hero = function(positionVector) {
   this.position = positionVector;
   this.centerPos = new Vector(
-    this.position.x + this.radius,
-    this.position.y + this.radius
+    positionVector.x + this.radius,
+    positionVector.y + this.radius
   );
   this.div;
   this.bullets = [];
@@ -28,7 +28,7 @@ const Hero = function(positionVector) {
   };
 
   this.moveDown = function() {
-    if (this.position.y + 10 < 800) {
+    if (this.position.y + this.radius * 2 < 600) {
       this.position.y += 10;
       this.updateCenterPos();
       this.renderHero();
@@ -43,18 +43,16 @@ const Hero = function(positionVector) {
     }
   };
   this.moveRight = function() {
-    if (this.position.x + 10 <= 800) {
+    if (this.position.x < 600 - this.radius * 2) {
       this.position.x += 10;
       this.updateCenterPos();
-
       this.renderHero();
     }
   };
   this.moveUp = function() {
-    if (this.position.y - 10 >= 0) {
+    if (this.position.y - this.radius / 2 >= 0) {
       this.position.y -= 10;
       this.updateCenterPos();
-
       this.renderHero();
     }
   };

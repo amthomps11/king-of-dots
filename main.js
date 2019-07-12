@@ -3,13 +3,15 @@ const heroAttributes = new Vector(250, 250);
 const mainChar = new Hero(heroAttributes);
 
 mainChar.createHero();
+mainChar.updateCenterPos();
 mainChar.renderHero();
 
-const enemyAttributes = new Vector(400, 250);
+const enemyAttributes = new Vector(300, 300);
 const badGuy = new Enemy(enemyAttributes);
 
 badGuy.createEnemy();
 badGuy.renderEnemy();
+badGuy.updateCenterPos();
 
 updateAllBulletPositions();
 setInterval(() => {
@@ -17,28 +19,73 @@ setInterval(() => {
 }, 100);
 
 let testBullet = new Bullet(new Vector(0, 0), new Vector(0, 0));
-console.log(testBullet);
 
-testBullet.createBullet();
-testBullet.renderBullet();
-document.addEventListener("click", function(e) {
-  testBullet.updateBulletPosition(new Vector(e.clientX, e.clientY));
-  testBullet.renderBullet();
-  console.log(`e.clientX:  ${e.clientX}, e.clientY: ${e.clientY}`);
-  console.log(
-    `testBullet.position.x:  ${testBullet.position.x}, testBullet.position.y: ${
-      testBullet.position.y
-    }`
-  );
+function areTheyColliding(obj1, obj2) {
+  if (
+    (obj1 instanceof Enemy && obj2 instanceof Bullet) ||
+    (obj2 instanceof Enemy && obj1 instanceof Bullet)
+  ) {
+    console.log("testing bullet and enemy");
+    let tempEnemy;
+    let tempBullet;
+    if (obj1 instanceof Enemy) {
+      tempEnemy = obj1;
+      tempBullet = obj2;
+    } else {
+      tempEnemy = obj2;
+      tempBullet = obj1;
+    }
 
-  console.log(
-    e.clientX - testBullet.position.x,
-    e.clientY - testBullet.position.y
-  );
+    let bulletCenter = new Vector(
+      parseInt(getComputedStyle(tempBullet.div).left) + tempBullet.radius,
+      parseInt(getComputedStyle(tempBullet.div).top) + tempBullet.radius
+    );
 
-  console.log(testBullet);
-});
+    let enemyCenter = tempEnemy.centerPos;
+
+    let tempDistanceBetween = bulletCenter.calcDistance(enemyCenter);
+    // console.log(tempDistanceBetween);
+    if (tempDistanceBetween < tempBullet.radius + tempEnemy.radius) {
+      return true;
+    } else {
+      return false;
+    }
+  } else if (
+    (obj1 instanceof Enemy && obj2 instanceof Hero) ||
+    (obj2 instanceof Enemy && obj1 instanceof Hero)
+  ) {
+    let tempEnemy;
+    let tempHero;
+    if (obj1 instanceof Enemy) {
+      tempEnemy = obj1;
+      tempHero = obj2;
+    } else {
+      tempEnemy = obj2;
+      tempHero = obj1;
+    }
+    let heroCenter = tempHero.centerPos;
+    let enemyCenter = tempEnemy.centerPos;
+    let tempDistanceBetween = heroCenter.calcDistance(enemyCenter);
+    if (tempDistanceBetween < tempHero.radius + tempEnemy.radius) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
 
 setInterval(function() {
-  badGuy.isShot(testBullet);
+  if (areTheyColliding(mainChar, badGuy)) {
+    mainChar.div.style.backgroundColor = "red";
+  } else {
+    mainChar.div.style.backgroundColor = "white";
+  }
+
+  // for (i = 0; i < mainChar.bullets.length; i++) {
+  //   if (areTheyColliding(mainChar.bullets[i], badGuy)) {
+  //     badGuy.div.style.backgroundColor = "green";
+  //   } else {
+  //     badGuy.div.style.backgroundColor = "red";
+  //   }
+  // }
 }, 10);
