@@ -3,6 +3,7 @@ const Bullet = function(posVector, targetVector) {
   this.targetVector = targetVector;
   this.direction = this.position.getUnitVectorTo(this.targetVector);
   this.div;
+  this.radius = 5 / 2;
 
   this.createBullet = function() {
     const tempDiv = document.createElement("DIV");
@@ -42,9 +43,8 @@ const updateAllBulletPositions = function() {
     mainChar.bullets[i].updateBulletPosition(bulletPos);
     let currentX = parseInt(getComputedStyle(mainChar.bullets[i].div).left);
     let currentY = parseInt(getComputedStyle(mainChar.bullets[i].div).top);
-
+    badGuy.isShot(mainChar.bullets[i]);
     if (currentX > 600 || currentX < 0 || currentY > 600 || currentY < 0) {
-      console.log();
       arena.removeChild(mainChar.bullets[i].div);
       mainChar.bullets.splice(i, 1);
     }

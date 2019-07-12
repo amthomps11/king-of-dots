@@ -1,8 +1,8 @@
-const arena = document.querySelector(".arena");
 const Hero = function(positionVector) {
   this.position = positionVector;
   this.div;
   this.bullets = [];
+  this.radius = 25 / 2;
 
   this.createHero = function() {
     const tempDiv = document.createElement("DIV");
@@ -40,4 +40,6 @@ const Hero = function(positionVector) {
       this.renderHero();
     }
   };
+
+  this.isHit = function(enemy) {};
 };
