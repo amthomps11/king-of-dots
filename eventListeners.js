@@ -24,24 +24,24 @@ document.body.addEventListener("keydown", function(evt) {
   }
 });
 
-document.addEventListener("click", function(evt) {
-  evt.preventDefault();
+// document.addEventListener("click", function(evt) {
+//   evt.preventDefault();
 
-  // let tempDiv = document.createElement("div");
-  // tempDiv.classList.add("hero");
-  // tempDiv.style.left = evt.clientX - 20 + "px";
-  // tempDiv.style.top = evt.clientY - 12 + "px";
-  // console.log(evt.clientX, evt.clientY);
-  // console.log(tempDiv);
-  // arena.appendChild(tempDiv);
+//   // let tempDiv = document.createElement("div");
+//   // tempDiv.classList.add("hero");
+//   // tempDiv.style.left = evt.clientX - 20 + "px";
+//   // tempDiv.style.top = evt.clientY - 12 + "px";
+//   // console.log(evt.clientX, evt.clientY);
+//   // console.log(tempDiv);
+//   // arena.appendChild(tempDiv);
 
-  let currentPos = new Vector(
-    mainChar.position.x + 10,
-    mainChar.position.y + 10
-  );
-  let mousePos = new Vector(evt.clientX, evt.clientY);
-  const tempBullet = new Bullet(currentPos, mousePos);
-  tempBullet.createBullet();
-  mainChar.bullets.push(tempBullet);
-  updateAllBulletPositions();
-});
+//   let currentPos = new Vector(
+//     mainChar.position.x + 10,
+//     mainChar.position.y + 10
+//   );
+//   let mousePos = new Vector(evt.clientX, evt.clientY);
+//   const tempBullet = new Bullet(currentPos, mousePos);
+//   tempBullet.createBullet();
+//   mainChar.bullets.push(tempBullet);
+//   updateAllBulletPositions();
+// });
