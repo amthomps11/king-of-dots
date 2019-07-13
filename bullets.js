@@ -6,7 +6,8 @@ const Bullet = function(posVector, targetVector) {
     this.position.x + this.radius,
     this.position.y + this.radius
   );
-  this.direction = this.position.getUnitVectorTo(this.targetVector);
+  // this.direction = this.position.getUnitVectorTo(this.targetVector);
+  this.direction = new Vector(1, 0);
   this.div;
 
   this.updateCenterPos = function() {
@@ -61,7 +62,6 @@ const updateAllBulletPositions = function() {
     if (areTheyColliding(mainChar.bullets[i], badGuy)) {
       badGuy.div.style.backgroundColor = "blue";
       arena.removeChild(mainChar.bullets[i].div);
-
       mainChar.bullets.splice(i, 1);
     } else {
       badGuy.div.style.backgroundColor = "red";

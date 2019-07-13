@@ -1,24 +1,19 @@
-const arena = document.querySelector(".arena");
-const heroAttributes = new Vector(250, 250);
-const mainChar = new Hero(heroAttributes);
+// const arena = document.querySelector(".arena");
+// const heroAttributes = new Vector(250, 250);
+// const mainChar = new Hero(heroAttributes);
 
-mainChar.createHero();
-mainChar.updateCenterPos();
-mainChar.renderHero();
+// mainChar.createHero();
+// mainChar.updateCenterPos();
+// mainChar.renderHero();
 
-const enemyAttributes = new Vector(300, 300);
-const badGuy = new Enemy(enemyAttributes);
+// const enemyAttributes = new Vector(300, 300);
+// const badGuy = new Enemy(enemyAttributes);
 
-badGuy.createEnemy();
-badGuy.renderEnemy();
-badGuy.updateCenterPos();
+// badGuy.createEnemy();
+// badGuy.renderEnemy();
+// badGuy.updateCenterPos();
 
-updateAllBulletPositions();
-setInterval(() => {
-  updateAllBulletPositions();
-}, 100);
-
-let testBullet = new Bullet(new Vector(0, 0), new Vector(0, 0));
+// let testBullet = new Bullet(new Vector(0, 0), new Vector(0, 0));
 
 function areTheyColliding(obj1, obj2) {
   if (
@@ -73,6 +68,9 @@ function areTheyColliding(obj1, obj2) {
     }
   }
 }
+
+
+function checkAllColisions
 
 setInterval(function() {
   if (areTheyColliding(mainChar, badGuy)) {

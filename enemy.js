@@ -5,7 +5,7 @@ const Enemy = function(positionVector) {
     this.position.y + this.radius
   );
 
-  this.radius = 25;
+  this.radius = 50;
   this.div;
 
   this.createEnemy = function() {
