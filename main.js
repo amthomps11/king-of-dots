@@ -1,26 +1,15 @@
-// const arena = document.querySelector(".arena");
-// const heroAttributes = new Vector(250, 250);
-// const mainChar = new Hero(heroAttributes);
-
-// mainChar.createHero();
-// mainChar.updateCenterPos();
-// mainChar.renderHero();
-
-// const enemyAttributes = new Vector(300, 300);
-// const badGuy = new Enemy(enemyAttributes);
-
-// badGuy.createEnemy();
-// badGuy.renderEnemy();
-// badGuy.updateCenterPos();
-
-// let testBullet = new Bullet(new Vector(0, 0), new Vector(0, 0));
+const enemyTypes = {
+  chaotic: "chaotic",
+  chaser: "chaser",
+  oscilator: "oscilator",
+  targeter: "targeter"
+};
 
 function areTheyColliding(obj1, obj2) {
   if (
     (obj1 instanceof Enemy && obj2 instanceof Bullet) ||
     (obj2 instanceof Enemy && obj1 instanceof Bullet)
   ) {
-    // console.log("testing bullet and enemy");
     let tempEnemy;
     let tempBullet;
     if (obj1 instanceof Enemy) {
@@ -44,7 +33,6 @@ function areTheyColliding(obj1, obj2) {
     console.log(enemyCenter);
 
     let tempDistanceBetween = bulletCenter.calcDistance(enemyCenter);
-    // console.log(tempDistanceBetween);
     if (tempDistanceBetween < tempBullet.radius + tempEnemy.radius) {
       return true;
     } else {
@@ -63,9 +51,7 @@ function areTheyColliding(obj1, obj2) {
       tempEnemy = obj2;
       tempHero = obj1;
     }
-    // let heroCenter = tempHero.centerPos;
 
-    // let enemyCenter = tempEnemy.centerPos;
     let heroCenter = new Vector(
       parseInt(getComputedStyle(tempHero.div).left) + tempHero.radius,
       parseInt(getComputedStyle(tempHero.div).top) + tempHero.radius
@@ -78,7 +64,13 @@ function areTheyColliding(obj1, obj2) {
 
     let tempDistanceBetween = heroCenter.calcDistance(enemyCenter);
     if (tempDistanceBetween < tempHero.radius + tempEnemy.radius) {
-      console.log("colliide");
+      console.log("hero is hit");
+      tempHero.health--;
+      console.log(tempHero.health);
+      if (tempHero.health === 0) {
+        console.log("you dead");
+        alert("game over");
+      }
       return true;
     } else {
       return false;
@@ -87,8 +79,6 @@ function areTheyColliding(obj1, obj2) {
 }
 
 function checkAllCollisions(hero, allBullets, allBaddies) {
-  // let bulletsToBeRemoved = [];
-  // let baddiesToBeRemoved = [];
   for (let i = 0; i < allBaddies.length; i++) {
     if (areTheyColliding(hero, allBaddies[i])) {
       console.log("hi");
@@ -108,22 +98,6 @@ function checkAllCollisions(hero, allBullets, allBaddies) {
     }
   }
 }
-
-// setInterval(function() {
-//   if (areTheyColliding(mainChar, badGuy)) {
-//     mainChar.div.style.backgroundColor = "red";
-//   } else {
-//     mainChar.div.style.backgroundColor = "white";
-//   }
-
-//   // for (i = 0; i < mainChar.bullets.length; i++) {
-//   //   if (areTheyColliding(mainChar.bullets[i], badGuy)) {
-//   //     badGuy.div.style.backgroundColor = "green";
-//   //   } else {
-//   //     badGuy.div.style.backgroundColor = "red";
-//   //   }
-//   // }
-// }, 10);
 
 function generateRandomPos() {
   return Math.floor(Math.random() * 600);

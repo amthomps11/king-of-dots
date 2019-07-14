@@ -7,6 +7,7 @@ const Hero = function(positionVector) {
   this.div;
   this.bullets = [];
   this.radius = 12.5;
+  this.health = 3;
 
   this.createHero = function() {
     const tempDiv = document.createElement("DIV");
