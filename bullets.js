@@ -6,8 +6,8 @@ const Bullet = function(posVector, targetVector) {
     this.position.x + this.radius,
     this.position.y + this.radius
   );
-  // this.direction = this.position.getUnitVectorTo(this.targetVector);
-  this.direction = new Vector(1, 0);
+  this.direction = this.position.getUnitVectorTo(this.targetVector);
+  // this.direction = new Vector(1, 0);
   this.div;
 
   this.updateCenterPos = function() {
@@ -45,27 +45,28 @@ const Bullet = function(posVector, targetVector) {
 
 const updateAllBulletPositions = function() {
   for (let i = mainChar.bullets.length - 1; i >= 0; i--) {
-    console.log(i);
     let bulletPos = mainChar.bullets[i].position;
     let bulletTarget = mainChar.bullets[i].targetVector;
     let bulletDirection = mainChar.bullets[i].direction;
-
     bulletDirection.setMagnitude(50);
     bulletPos = addTwoVectors(bulletPos, bulletDirection);
     mainChar.bullets[i].updateBulletPosition(bulletPos);
+
     let currentX = parseInt(getComputedStyle(mainChar.bullets[i].div).left);
     let currentY = parseInt(getComputedStyle(mainChar.bullets[i].div).top);
-    if (currentX > 600 || currentX < 0 || currentY > 600 || currentY < 0) {
+
+    if (currentX > 1200 || currentX < 0 || currentY > 1200 || currentY < 0) {
       arena.removeChild(mainChar.bullets[i].div);
       mainChar.bullets.splice(i, 1);
     }
-    if (areTheyColliding(mainChar.bullets[i], badGuy)) {
-      badGuy.div.style.backgroundColor = "blue";
-      arena.removeChild(mainChar.bullets[i].div);
-      mainChar.bullets.splice(i, 1);
-    } else {
-      badGuy.div.style.backgroundColor = "red";
-    }
+
+    // if (areTheyColliding(mainChar.bullets[i], badGuy)) {
+    //   badGuy.div.style.backgroundColor = "blue";
+    //   arena.removeChild(mainChar.bullets[i].div);
+    //   mainChar.bullets.splice(i, 1);
+    // } else {
+    //   badGuy.div.style.backgroundColor = "red";
+    // }
     mainChar.bullets[i].renderBullet();
   }
 };

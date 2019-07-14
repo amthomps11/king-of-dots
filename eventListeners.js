@@ -27,14 +27,6 @@ document.body.addEventListener("keydown", function(evt) {
 document.addEventListener("click", function(evt) {
   evt.preventDefault();
 
-  // let tempDiv = document.createElement("div");
-  // tempDiv.classList.add("hero");
-  // tempDiv.style.left = evt.clientX - 20 + "px";
-  // tempDiv.style.top = evt.clientY - 12 + "px";
-  // console.log(evt.clientX, evt.clientY);
-  // console.log(tempDiv);
-  // arena.appendChild(tempDiv);
-
   let currentPos = new Vector(
     mainChar.position.x + 10,
     mainChar.position.y + 10
@@ -43,6 +35,8 @@ document.addEventListener("click", function(evt) {
   const tempBullet = new Bullet(currentPos, mousePos);
   tempBullet.createBullet();
   tempBullet.updateCenterPos();
+  tempBullet.renderBullet();
   mainChar.bullets.push(tempBullet);
+
   updateAllBulletPositions();
 });

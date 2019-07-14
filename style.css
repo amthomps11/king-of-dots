@@ -30,7 +30,7 @@ body {
   /* border: solid black 1px; */
   background-color: red;
   position: absolute;
-  transition: top 0.1s, left 0.1s;
+  transition: top 5s, left 5s;
   transition-timing-function: linear;
   background-repeat: no-repeat;
   margin: 0;

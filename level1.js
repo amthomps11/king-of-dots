@@ -8,23 +8,31 @@ mainChar.renderHero();
 
 const baddies = [];
 
-for (let i = 0; i < 10; i++) {
-  const enemyAttributes = new Vector(300, 300);
-  const badGuy = new Enemy(enemyAttributes);
+for (let i = 0; i < 1; i++) {
+  //   const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
+  const enemyPos = new Vector(500, 250);
+  const enemyTarg = new Vector(mainChar.position.x, mainChar.position.y);
+  const badGuy = new Enemy(enemyPos, enemyTarg);
+  badGuy.updateCenterPos();
   badGuy.createEnemy();
   badGuy.updateCenterPos();
   badGuy.renderEnemy();
+  baddies.push(badGuy);
 }
 
 updateAllBulletPositions();
+checkAllCollisions(mainChar, mainChar.bullets, baddies);
 setInterval(() => {
   updateAllBulletPositions();
+  //   updateAllBaddies(baddies);
+  checkAllCollisions(mainChar, mainChar.bullets, baddies);
+  baddies[0].updateEnemyPosition(new Vector(0, 250));
+
+  //   for (let i = 0; i < baddies.length; i++) {
+  //     baddies[i].setDirection(mainChar);
+  //   }
 }, 100);
 
-setInterval(function() {
-  if (areTheyColliding(mainChar, badGuy)) {
-    mainChar.div.style.backgroundColor = "red";
-  } else {
-    mainChar.div.style.backgroundColor = "white";
-  }
-}, 10);
+// setTimeout(function() {
+//   baddies[0].updateEnemyPosition(new Vector(0, 250));
+// }, 2000);
