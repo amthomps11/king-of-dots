@@ -8,29 +8,30 @@ mainChar.renderHero();
 
 const baddies = [];
 
-for (let i = 0; i < 5; i++) {
-  const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
+for (let i = 0; i < 1; i++) {
+  //   const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
+  const enemyPos = new Vector(0, 0);
+
   const badGuy = new Enemy(enemyPos);
 
   //   badGuy.updateCenterPos();
   badGuy.createEnemy("oscilator");
   badGuy.renderEnemy();
   badGuy.setTargets();
-  badGuy.distanceToOscialte = 10;
   baddies.push(badGuy);
 }
 
-for (let i = 0; i < 5; i++) {
-  const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
-  const badGuy = new Enemy(enemyPos);
+// for (let i = 0; i < 5; i++) {
+//   const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
+//   const badGuy = new Enemy(enemyPos);
 
-  //   badGuy.updateCenterPos();
-  badGuy.createEnemy("chaotic");
-  badGuy.renderEnemy();
-  badGuy.setTargets();
+//   //   badGuy.updateCenterPos();
+//   badGuy.createEnemy("chaotic");
+//   badGuy.renderEnemy();
+//   badGuy.setTargets();
 
-  baddies.push(badGuy);
-}
+//   baddies.push(badGuy);
+// }
 
 updateAllBulletPositions();
 checkAllCollisions(mainChar, mainChar.bullets, baddies);

@@ -10,7 +10,6 @@ const Enemy = function(positionVector) {
   this.radius = 25;
   this.div;
   this.enemyType;
-  this.distanceToOscialte = 50;
 
   this.createEnemy = function(enemyType) {
     this.enemyType = enemyType;
@@ -51,29 +50,22 @@ const Enemy = function(positionVector) {
         break;
       case "oscilator":
         let startVector = this.position;
-        let endVector = new Vector(generateRandomPos(), generateRandomPos());
-        // console.log(startVector);
-        // console.log(endVector);
+        let endVector = new Vector(600, 0);
         let directionalVector = startVector.getUnitVectorTo(endVector);
-        // console.log(directionalVector);
-        // this.targets.push(endVector);
-        directionalVector.setMagnitude(this.distanceToOscialte);
+        let distance = startVector.calcDistance(endVector);
+        directionalVector.setMagnitude(distance / 32);
         let tempVector = startVector;
         let tempReverseDirections = [];
         let tempReverseVector;
-        for (let i = 0; i < 10; i++) {
+        this.targets.push(startVector);
+        tempReverseDirections.push(startVector);
+        for (let i = 0; i < 30; i++) {
           tempVector = addTwoVectors(tempVector, directionalVector);
           this.targets.push(tempVector);
-          // tempReverseVector = reverseAVector(tempVector);
           tempReverseDirections.push(tempVector);
-          // console.log(tempVector);
-          // console.log(tempReverseVector);
         }
         tempReverseDirections.reverse();
-        console.log(this.targets);
-        console.log(tempReverseDirections);
         this.targets = this.targets.concat(tempReverseDirections);
-        console.log(this.targets);
         break;
     }
   };
@@ -98,9 +90,6 @@ const updateAllBaddies = function(baddies) {
         if (baddies[i].targetIndex === baddies[i].targets.length) {
           baddies[i].targetIndex = 0;
         }
-        // if (baddies[i].targetIndex === baddies[i].targets.length) {
-        //   baddies[i].targetIndex = baddies[i].targets.length - 1;
-        // }
 
         baddies[i].updateEnemyPosition(
           baddies[i].targets[baddies[i].targetIndex]
