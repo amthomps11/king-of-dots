@@ -76,21 +76,29 @@ const Enemy = function(positionVector) {
   };
 };
 
-const updateAllBaddies = function(baddies) {
+const updateAllBaddies = function(baddies, hero) {
   for (let i = 0; i < baddies.length; i++) {
     let targetIndex;
+    let tempDirection;
     switch (baddies[i].enemyType) {
       case "chaotic":
         targetIndex = Math.floor(Math.random() * baddies[i].targets.length);
         baddies[i].updateEnemyPosition(baddies[i].targets[targetIndex]);
         break;
       case "chaser":
+        tempDirection = baddies[i].position.getUnitVectorTo(hero.position);
+        tempDirection.setMagnitude(3);
+        let tempVectorToHero = addTwoVectors(
+          baddies[i].position,
+          tempDirection
+        );
+        baddies[i].updateEnemyPosition(tempVectorToHero);
+
         break;
       case "oscilator":
         if (baddies[i].targetIndex === baddies[i].targets.length) {
           baddies[i].targetIndex = 0;
         }
-
         baddies[i].updateEnemyPosition(
           baddies[i].targets[baddies[i].targetIndex]
         );

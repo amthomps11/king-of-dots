@@ -30,7 +30,7 @@ function areTheyColliding(obj1, obj2) {
       parseInt(getComputedStyle(tempEnemy.div).left) + tempEnemy.radius,
       parseInt(getComputedStyle(tempEnemy.div).top) + tempEnemy.radius
     );
-    console.log(enemyCenter);
+    // console.log(enemyCenter);
 
     let tempDistanceBetween = bulletCenter.calcDistance(enemyCenter);
     if (tempDistanceBetween < tempBullet.radius + tempEnemy.radius) {

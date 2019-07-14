@@ -8,43 +8,43 @@ mainChar.renderHero();
 
 const baddies = [];
 
-for (let i = 0; i < 1; i++) {
-  //   const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
-  const enemyPos = new Vector(0, 0);
-
+for (let i = 0; i < 5; i++) {
+  const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
   const badGuy = new Enemy(enemyPos);
-
-  //   badGuy.updateCenterPos();
   badGuy.createEnemy("oscilator");
   badGuy.renderEnemy();
   badGuy.setTargets();
   baddies.push(badGuy);
 }
 
-// for (let i = 0; i < 5; i++) {
-//   const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
-//   const badGuy = new Enemy(enemyPos);
+for (let i = 0; i < 5; i++) {
+  const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
+  const badGuy = new Enemy(enemyPos);
+  badGuy.createEnemy("chaotic");
+  badGuy.renderEnemy();
+  badGuy.setTargets();
+  baddies.push(badGuy);
+}
 
-//   //   badGuy.updateCenterPos();
-//   badGuy.createEnemy("chaotic");
-//   badGuy.renderEnemy();
-//   badGuy.setTargets();
-
-//   baddies.push(badGuy);
-// }
+for (let i = 0; i < 5; i++) {
+  const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
+  const badGuy = new Enemy(enemyPos);
+  badGuy.createEnemy("chaser");
+  badGuy.renderEnemy();
+  badGuy.setTargets();
+  baddies.push(badGuy);
+}
 
 updateAllBulletPositions();
 checkAllCollisions(mainChar, mainChar.bullets, baddies);
 setInterval(() => {
   updateAllBulletPositions();
-  updateAllBaddies(baddies);
+  updateAllBaddies(baddies, mainChar);
   checkAllCollisions(mainChar, mainChar.bullets, baddies);
-
-  //   for (let i = 0; i < baddies.length; i++) {
-  //     baddies[i].setDirection(mainChar);
-  //   }
+  if (baddies.length === 0) {
+    //alert("you beat the level");
+  }
+  if (mainChar.health === 0) {
+    // alert("you lose");
+  }
 }, 100);
-
-// setTimeout(function() {
-//   baddies[0].updateEnemyPosition(new Vector(0, 250));
-// }, 2000);
