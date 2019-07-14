@@ -27,15 +27,16 @@ body {
   border-radius: 50%;
   /* background-color: red; */
   position: absolute;
-  transition: top 1s, left 1s;
-  transition-timing-function: linear;
-  background-repeat: no-repeat;
+
   margin: 0;
   padding: 0;
 }
 
 .chaotic {
   background-color: red;
+  transition: top 1s, left 1s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
 }
 
 .chaser {
@@ -44,6 +45,9 @@ body {
 
 .oscilator {
   background-color: green;
+  transition: top 0.1s, left 0.1s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
 }
 
 .bullet {

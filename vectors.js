@@ -17,6 +17,11 @@ const Vector = function(x, y) {
     return new Vector(this.x / this.mag, this.y / this.mag);
   };
 
+  this.reverseDirection = function() {
+    this.x = -x;
+    this.y = -y;
+  };
+
   this.getUnitVectorTo = function(vector) {
     let newVec = new Vector(
       (vector.x - this.x) / this.calcDistance(vector),
@@ -44,4 +49,8 @@ const Vector = function(x, y) {
 
 const addTwoVectors = function(a, b) {
   return new Vector(a.x + b.x, a.y + b.y);
+};
+
+const reverseAVector = function(vector) {
+  return new Vector(vector.x * -1, vector.y * -1);
 };

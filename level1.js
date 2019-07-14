@@ -16,6 +16,18 @@ for (let i = 0; i < 5; i++) {
   badGuy.createEnemy("oscilator");
   badGuy.renderEnemy();
   badGuy.setTargets();
+  badGuy.distanceToOscialte = 10;
+  baddies.push(badGuy);
+}
+
+for (let i = 0; i < 5; i++) {
+  const enemyPos = new Vector(generateRandomPos(), generateRandomPos());
+  const badGuy = new Enemy(enemyPos);
+
+  //   badGuy.updateCenterPos();
+  badGuy.createEnemy("chaotic");
+  badGuy.renderEnemy();
+  badGuy.setTargets();
 
   baddies.push(badGuy);
 }
@@ -24,10 +36,7 @@ updateAllBulletPositions();
 checkAllCollisions(mainChar, mainChar.bullets, baddies);
 setInterval(() => {
   updateAllBulletPositions();
-  updateAllBaddies(
-    baddies,
-    new Vector(generateRandomPos(), generateRandomPos())
-  );
+  updateAllBaddies(baddies);
   checkAllCollisions(mainChar, mainChar.bullets, baddies);
 
   //   for (let i = 0; i < baddies.length; i++) {
