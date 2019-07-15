@@ -48,3 +48,8 @@ for (let i = 0; i < 4; i++) {
 const allThebadguys = [baddies1, baddies2, baddies3];
 
 runAllUpdates(allThebadguys);
+setInterval(function() {
+  if (baddies3.length === 0) {
+    document.location.href = "../levelTwoFiles/level2.html";
+  }
+});
