@@ -1,4 +1,11 @@
-const colors = ["yellow", "blue", "green", "red", "white"];
+// const colors = ["yellow", "blue", "green", "red", "white"];
+const colors = [
+  "url(images/circleGreen2.png)",
+  "url(images/circleBlue.png)",
+  "url(images/circleRed.png)",
+  "url(images/circleYellow.png)",
+  "url(images/heroCircle.png)"
+];
 let theColorsAreCrazyNow = false;
 let theColorsAreBlinkingNow = false;
 const Dot = function(positionVector) {
@@ -9,9 +16,9 @@ const Dot = function(positionVector) {
     const tempDiv = document.createElement("DIV");
     tempDiv.classList.add("dots");
     if (!theColorsAreCrazyNow) {
-      tempDiv.style.backgroundColor = "white";
+      tempDiv.style.backgroundImage = "url(images/heroCircle.png)";
     } else {
-      tempDiv.style.backgroundColor =
+      tempDiv.style.backgroundImage =
         colors[Math.floor(Math.random() * colors.length)];
     }
     this.div = tempDiv;
@@ -104,7 +111,7 @@ setInterval(function() {
 setInterval(function() {
   if (theColorsAreBlinkingNow === true) {
     for (let i = 0; i < dots.length; i++) {
-      dots[i].div.style.backgroundColor =
+      dots[i].div.style.backgroundImage =
         colors[Math.floor(Math.random() * colors.length)];
     }
   }

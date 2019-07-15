@@ -83,6 +83,7 @@ button:hover {
   border-radius: 50%;
   /* background-color: white; */
   position: absolute;
+  background-size: cover;
   transition: top 0.5s, left 0.5s;
   transition-timing-function: linear;
   background-repeat: no-repeat;
