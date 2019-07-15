@@ -1,0 +1,103 @@
+body {
+  position: absolute;
+}
+
+.HUD {
+  width: 600px;
+  height: 50px;
+  color: white;
+  background-color: black;
+  /* position: absolute; */
+}
+
+.textBox {
+  font-family: "Press Start 2P", cursive;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  width: 200px;
+  height: 100px;
+  background-color: black;
+  color: white;
+  border: solid white 2px;
+}
+.arena {
+  width: 600px;
+  height: 600px;
+  background-color: lightgrey;
+  position: absolute;
+  z-index: 0;
+}
+
+.hero {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  /* border: solid black 1px; */
+  background-color: white;
+  /* background-image: url(images/heart.png); */
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  transition: top 0.1s, left 0.1s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+.enemy {
+  border-radius: 50%;
+  /* background-color: red; */
+  position: absolute;
+
+  margin: 0;
+  padding: 0;
+}
+
+.chaotic {
+  background-color: red;
+  transition: top 1s, left 1s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
+}
+
+.chaser {
+  background-color: blue;
+}
+
+.oscilator {
+  background-color: green;
+  transition: top 0.1s, left 0.1s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
+}
+
+.bullet {
+  /* width: 30px; */
+  /* height: 30px; */
+  border-radius: 50%;
+  /* border: solid  red 1px; */
+  background-color: white;
+  position: absolute;
+  transition: top 0.1s, left 0.1s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+}
+
+.dots {
+  width: 50px;
+  height: 50px;
+  /* border-radius: 50%; */
+  /* border: solid blue 1px; */
+  background-color: white;
+  position: relative;
+  transition: top 0.5s, left 0.5s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}

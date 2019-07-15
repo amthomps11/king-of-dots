@@ -16,10 +16,14 @@ const Hero = function(positionVector) {
     arena.appendChild(this.div);
   };
 
+  this.createHero();
+
   this.renderHero = function() {
     this.div.style.top = `${this.position.y}px`;
     this.div.style.left = `${this.position.x}px`;
   };
+
+  this.renderHero();
 
   this.updateCenterPos = function() {
     this.centerPos = new Vector(
@@ -27,6 +31,8 @@ const Hero = function(positionVector) {
       this.position.y + this.radius
     );
   };
+
+  this.updateCenterPos();
 
   this.moveDown = function() {
     if (this.position.y + this.radius * 2 < 600) {

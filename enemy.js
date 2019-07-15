@@ -10,33 +10,6 @@ const Enemy = function(positionVector) {
   this.radius = 25;
   this.div;
   this.enemyType;
-
-  this.createEnemy = function(enemyType) {
-    this.enemyType = enemyType;
-    const tempDiv = document.createElement("DIV");
-    tempDiv.classList.add("enemy");
-    switch (enemyType) {
-      case "chaotic":
-        tempDiv.classList.add(enemyTypes["chaotic"]);
-        break;
-      case "chaser":
-        tempDiv.classList.add(enemyTypes["chaser"]);
-        break;
-      case "oscilator":
-        tempDiv.classList.add(enemyTypes["oscilator"]);
-        break;
-    }
-    tempDiv.style.height = this.radius * 2 + "px";
-    tempDiv.style.width = this.radius * 2 + "px";
-    this.div = tempDiv;
-    arena.appendChild(this.div);
-  };
-
-  this.updateEnemyPosition = function(vector) {
-    this.position = vector;
-    this.renderEnemy();
-  };
-
   this.setTargets = function() {
     switch (this.enemyType) {
       case "chaotic":
@@ -73,6 +46,34 @@ const Enemy = function(positionVector) {
   this.renderEnemy = function() {
     this.div.style.top = `${this.position.y}px`;
     this.div.style.left = `${this.position.x}px`;
+  };
+
+  this.createEnemy = function(enemyType) {
+    this.enemyType = enemyType;
+    const tempDiv = document.createElement("DIV");
+    tempDiv.classList.add("enemy");
+    switch (enemyType) {
+      case "chaotic":
+        tempDiv.classList.add(enemyTypes["chaotic"]);
+        break;
+      case "chaser":
+        tempDiv.classList.add(enemyTypes["chaser"]);
+        break;
+      case "oscilator":
+        tempDiv.classList.add(enemyTypes["oscilator"]);
+        break;
+    }
+    tempDiv.style.height = this.radius * 2 + "px";
+    tempDiv.style.width = this.radius * 2 + "px";
+    this.div = tempDiv;
+    arena.appendChild(this.div);
+    this.renderEnemy();
+    this.setTargets();
+  };
+
+  this.updateEnemyPosition = function(vector) {
+    this.position = vector;
+    this.renderEnemy();
   };
 };
 

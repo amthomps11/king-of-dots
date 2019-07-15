@@ -2,10 +2,6 @@ const arena = document.querySelector(".arena");
 const heroAttributes = new Vector(250, 250);
 const mainChar = new Hero(heroAttributes);
 
-mainChar.createHero();
-mainChar.updateCenterPos();
-mainChar.renderHero();
-
 const baddies = [];
 
 for (let i = 0; i < 5; i++) {
@@ -35,16 +31,4 @@ for (let i = 0; i < 5; i++) {
   baddies.push(badGuy);
 }
 
-updateAllBulletPositions();
-checkAllCollisions(mainChar, mainChar.bullets, baddies);
-setInterval(() => {
-  updateAllBulletPositions();
-  updateAllBaddies(baddies, mainChar);
-  checkAllCollisions(mainChar, mainChar.bullets, baddies);
-  if (baddies.length === 0) {
-    //alert("you beat the level");
-  }
-  if (mainChar.health === 0) {
-    // alert("you lose");
-  }
-}, 100);
+runAllUpdates();

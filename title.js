@@ -46,13 +46,6 @@ const generateXDot = function() {
   dots.push(tempDot);
 };
 
-for (let i = 0; i < 10; i++) {
-  generateYDot();
-}
-for (let i = 0; i < 50; i++) {
-  generateXDot();
-}
-
 let moveDots = function() {
   if (dots.length > 0) {
     for (let i = dots.length - 1; i > 0; i--) {
@@ -89,8 +82,20 @@ let moveDots = function() {
   }
 };
 
-moveDots();
 setInterval(moveDots, 100);
+let i = 0;
+setInterval(function() {
+  if (i < 36) {
+    generateXDot();
+    generateYDot();
+    generateXDot();
+    generateYDot();
+    i++;
+  }
+
+  moveDots();
+}, 1000);
+
 setTimeout(function() {
   document.querySelector(".menu").style.display = "flex";
 }, 36000);

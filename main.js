@@ -64,11 +64,9 @@ function areTheyColliding(obj1, obj2) {
 
     let tempDistanceBetween = heroCenter.calcDistance(enemyCenter);
     if (tempDistanceBetween < tempHero.radius + tempEnemy.radius) {
-      console.log("hero is hit");
       tempHero.health--;
-      console.log(tempHero.health);
+
       if (tempHero.health === 0) {
-        console.log("you dead");
         alert("game over");
       }
       return true;
@@ -77,17 +75,21 @@ function areTheyColliding(obj1, obj2) {
     }
   }
 }
-
+function updateHUD(HUD) {
+  HUD.innerHTML = mainChar.health;
+}
 function checkAllCollisions(hero, allBullets, allBaddies) {
   for (let i = 0; i < allBaddies.length; i++) {
     if (areTheyColliding(hero, allBaddies[i])) {
-      console.log("hi");
+      console.log(hero.health);
+      hero.health--;
+      updateHUD(HUD);
     }
 
     for (let i = allBullets.length - 1; i >= 0; i--) {
       for (let j = allBaddies.length - 1; j >= 0; j--) {
         if (areTheyColliding(allBullets[i], allBaddies[j])) {
-          console.log("asdfpoj");
+          // console.log("asdfpoj");
 
           arena.removeChild(hero.bullets[i].div);
           hero.bullets.splice(i, 1);
@@ -102,3 +104,13 @@ function checkAllCollisions(hero, allBullets, allBaddies) {
 function generateRandomPos() {
   return Math.floor(Math.random() * 600);
 }
+
+let runAllUpdates = function() {
+  updateAllBulletPositions();
+  checkAllCollisions(mainChar, mainChar.bullets, baddies);
+  setInterval(() => {
+    updateAllBulletPositions();
+    updateAllBaddies(baddies, mainChar);
+    checkAllCollisions(mainChar, mainChar.bullets, baddies);
+  }, 100);
+};
