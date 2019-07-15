@@ -1,3 +1,5 @@
+const colors = ["yellow", "blue", "green", "red", "white"];
+
 const Dot = function(positionVector) {
   this.position = positionVector;
   this.div;
@@ -5,6 +7,8 @@ const Dot = function(positionVector) {
   this.createDot = function() {
     const tempDiv = document.createElement("DIV");
     tempDiv.classList.add("dots");
+    tempDiv.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
     this.div = tempDiv;
     document.body.appendChild(this.div);
   };
@@ -24,7 +28,7 @@ const dots = [];
 
 const generateYDot = function() {
   let randomYPos = Math.floor(Math.random() * window.outerHeight);
-  let tempDot = new Dot(new Vector(0, randomYPos));
+  let tempDot = new Dot(new Vector(-50, randomYPos));
   tempDot.createDot();
   let tempSpeed = Math.floor(Math.random() * 5);
   tempDot.div.style.transition = `top ${tempSpeed}s, left ${tempSpeed}s`;
@@ -34,15 +38,13 @@ const generateYDot = function() {
 
 const generateXDot = function() {
   let randomXPos = Math.floor(Math.random() * window.outerWidth);
-  let tempDot = new Dot(new Vector(randomXPos, 0));
+  let tempDot = new Dot(new Vector(randomXPos, -50));
   tempDot.createDot();
   let tempSpeed = Math.floor(Math.random() * 5);
   tempDot.div.style.transition = `top ${tempSpeed}s, left ${tempSpeed}s`;
   tempDot.renderDot();
   dots.push(tempDot);
 };
-
-console.log(window.outerWidth);
 
 for (let i = 0; i < 10; i++) {
   generateYDot();
@@ -60,6 +62,8 @@ let moveDots = function() {
       let currentX = parseInt(getComputedStyle(dots[i].div).left);
       let currentY = parseInt(getComputedStyle(dots[i].div).top);
       if (currentX >= 1500) {
+        document.body.removeChild(dots[i].div);
+
         dots.splice(i, 1);
 
         let coinflip = Math.floor(Math.random() * 2);
@@ -69,7 +73,8 @@ let moveDots = function() {
           generateYDot();
         }
       }
-      if (currentY >= 2000) {
+      if (currentY >= 1000) {
+        document.body.removeChild(dots[i].div);
         dots.splice(i, 1);
         let coinflip = Math.floor(Math.random() * 2);
         if (coinflip === 0) {
@@ -85,4 +90,7 @@ let moveDots = function() {
 };
 
 moveDots();
-setInterval(moveDots, 10);
+setInterval(moveDots, 100);
+setTimeout(function() {
+  document.querySelector(".menu").style.display = "flex";
+}, 36000);
