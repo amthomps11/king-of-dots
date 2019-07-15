@@ -33,7 +33,7 @@ body {
 }
 
 .chaotic {
-  background-color: red;
+  /* background-color: red; */
   background-image: url(images/circleRed.png);
   background-size: cover;
   transition: top 1.5s, left 1.5s;
@@ -42,7 +42,7 @@ body {
 }
 
 .chaser {
-  background-color: blue;
+  /* background-color: blue; */
   background-image: url(images/circleBlue.png);
   background-size: 100%;
   transition: top 0.1s, left 0.1s;
@@ -51,7 +51,7 @@ body {
 }
 
 .oscilator {
-  background-color: green;
+  /* background-color: green; */
   background-image: url(images/circleGreen2.png);
   background-size: cover;
   transition: top 0.1s, left 0.1s;

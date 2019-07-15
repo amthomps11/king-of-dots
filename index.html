@@ -4,18 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="./style.css" />
 
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="titleFiles/title.css" />
+    <embed id="music" src="sounds/theme8bit.mp3" loop="true" autostart="true" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="essentialFiles/vectors.js"></script>
+    <script defer src="titleFiles/title.js"></script>
+    <script defer src="essentialFiles/main.js"></script>
+    <!-- <embed id="music" src="sounds/skyrim.mp3" loop="true" autostart="true" /> -->
+    <title>Title</title>
   </head>
-
   <body>
-    <div class="arena"></div>
-    <script src="vectors.js"></script>
-    <script src="eventListeners.js"></script>
-    <script src="hero.js"></script>
-    <script src="enemy.js"></script>
-    <script src="bullets.js"></script>
-    <script src="main.js"></script>
+    <div class="menu">
+      <div class="titleText">King Of Dots</div>
+      <div class="subtitleText">Rise of Dotty</div>
+
+      <div class="buttonWrapper">
+        <a href="levelOneFiles/level1.html"> <button>Play</button></a>
+        <button>Tutorial</button>
+      </div>
+    </div>
   </body>
 </html>
