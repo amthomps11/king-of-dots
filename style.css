@@ -25,7 +25,6 @@ body {
 
 .enemy {
   border-radius: 50%;
-  /* background-color: red; */
   position: absolute;
 
   margin: 0;
@@ -34,13 +33,16 @@ body {
 
 .chaotic {
   background-color: red;
-  transition: top 1s, left 1s;
+  transition: top 1.5s, left 1.5s;
   transition-timing-function: linear;
   background-repeat: no-repeat;
 }
 
 .chaser {
   background-color: blue;
+  transition: top 0.1s, left 0.1s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
 }
 
 .oscilator {

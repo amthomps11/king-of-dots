@@ -3,6 +3,7 @@ const heroAttributes = new Vector(250, 250);
 const mainChar = new Hero(heroAttributes);
 const allTextBoxes = [];
 let hasMoved = false;
+let hasShot = false;
 
 // const HUD = document.querySelector(".HUD");
 // updateHUD(HUD);
@@ -12,13 +13,8 @@ const baddies = [];
 const firstText = new TextBox(
   "This white dot is you. Move around with the arrow keys"
 );
-
-const secondText = new TextBox("Shoot a bullet towards your mouse by clicking");
 allTextBoxes.push(firstText);
-
 scrollText(firstText);
-
-// runAllUpdates();
 
 updateAllBulletPositions();
 checkAllCollisions(mainChar, mainChar.bullets, baddies);
@@ -28,8 +24,15 @@ setInterval(() => {
       (mainChar.position.x !== 250 || mainChar.position.y !== 250) &&
       firstText.completedScrolling === true
     ) {
-      firstText.deleteDiv();
-      allTextBoxes.splice(0, 1);
+      firstText.resetText("Shoot a bullet towards your mouse by clicking");
+      scrollText(firstText);
+      if (
+        (mainChar.bullets.length > 0) &
+        (firstText.completedScrolling === true)
+      ) {
+        firstText.resetText("pepeee");
+        scrollText(firstText);
+      }
     }
   }
   updateAllBulletPositions();

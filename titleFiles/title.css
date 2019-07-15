@@ -42,6 +42,10 @@ body {
   font-size: 3em;
 }
 
+a {
+  text-decoration: none;
+}
+
 .buttonWrapper {
   /* border: solid white 1px; */
   width: 100%;

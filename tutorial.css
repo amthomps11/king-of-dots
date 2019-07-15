@@ -15,11 +15,12 @@ body {
   position: absolute;
   left: 50px;
   top: 50px;
-  width: 200px;
+  width: 400px;
   height: 100px;
   background-color: black;
   color: white;
   border: solid white 2px;
+  padding: 5px;
 }
 .arena {
   width: 600px;

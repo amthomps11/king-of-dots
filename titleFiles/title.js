@@ -97,15 +97,18 @@ setInterval(function() {
     generateYDot();
     i++;
   }
+
+  moveDots();
+}, 1000);
+
+setInterval(function() {
   if (theColorsAreBlinkingNow === true) {
     for (let i = 0; i < dots.length; i++) {
       dots[i].div.style.backgroundColor =
         colors[Math.floor(Math.random() * colors.length)];
     }
   }
-
-  moveDots();
-}, 1000);
+}, 750);
 
 setTimeout(function() {
   for (let i = 0; i < dots.length; i++) {

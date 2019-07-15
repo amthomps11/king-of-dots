@@ -39,4 +39,5 @@ document.addEventListener("click", function(evt) {
   mainChar.bullets.push(tempBullet);
 
   updateAllBulletPositions();
+  play();
 });

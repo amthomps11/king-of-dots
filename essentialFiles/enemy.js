@@ -5,11 +5,16 @@ const Enemy = function(positionVector) {
     this.position.y + this.radius
   );
 
+  this.firstEndVector;
+
   this.targets = [];
   this.targetIndex = 0;
   this.radius = 25;
   this.div;
   this.enemyType;
+  this.setEndVector = function(vector) {
+    this.firstEndVector = vector;
+  };
   this.setTargets = function() {
     switch (this.enemyType) {
       case "chaotic":
@@ -23,7 +28,7 @@ const Enemy = function(positionVector) {
         break;
       case "oscilator":
         let startVector = this.position;
-        let endVector = new Vector(600, 0);
+        let endVector = this.firstEndVector;
         let directionalVector = startVector.getUnitVectorTo(endVector);
         let distance = startVector.calcDistance(endVector);
         directionalVector.setMagnitude(distance / 32);
@@ -88,7 +93,7 @@ const updateAllBaddies = function(baddies, hero) {
         break;
       case "chaser":
         tempDirection = baddies[i].position.getUnitVectorTo(hero.position);
-        tempDirection.setMagnitude(3);
+        tempDirection.setMagnitude(5);
         let tempVectorToHero = addTwoVectors(
           baddies[i].position,
           tempDirection

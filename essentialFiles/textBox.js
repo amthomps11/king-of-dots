@@ -30,6 +30,14 @@ const TextBox = function(string) {
     this.currentTextIndex++;
     this.displayText();
   };
+
+  this.resetText = function(string) {
+    this.div;
+    this.textToDisplay = "";
+    this.textArray = string.split("");
+    this.currentTextIndex = 0;
+    this.completedScrolling = false;
+  };
 };
 
 let scrollText = function(textBox) {

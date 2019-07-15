@@ -25,12 +25,10 @@ function areTheyColliding(obj1, obj2) {
       parseInt(getComputedStyle(tempBullet.div).top) + tempBullet.radius
     );
 
-    // let enemyCenter = tempEnemy.centerPos;
     let enemyCenter = new Vector(
       parseInt(getComputedStyle(tempEnemy.div).left) + tempEnemy.radius,
       parseInt(getComputedStyle(tempEnemy.div).top) + tempEnemy.radius
     );
-    // console.log(enemyCenter);
 
     let tempDistanceBetween = bulletCenter.calcDistance(enemyCenter);
     if (tempDistanceBetween < tempBullet.radius + tempEnemy.radius) {
@@ -78,6 +76,7 @@ function areTheyColliding(obj1, obj2) {
 function updateHUD(HUD) {
   HUD.innerHTML = mainChar.health;
 }
+
 function checkAllCollisions(hero, allBullets, allBaddies) {
   for (let i = 0; i < allBaddies.length; i++) {
     if (areTheyColliding(hero, allBaddies[i])) {
@@ -89,8 +88,6 @@ function checkAllCollisions(hero, allBullets, allBaddies) {
     for (let i = allBullets.length - 1; i >= 0; i--) {
       for (let j = allBaddies.length - 1; j >= 0; j--) {
         if (areTheyColliding(allBullets[i], allBaddies[j])) {
-          // console.log("asdfpoj");
-
           arena.removeChild(hero.bullets[i].div);
           hero.bullets.splice(i, 1);
           arena.removeChild(allBaddies[j].div);
@@ -105,12 +102,17 @@ function generateRandomPos() {
   return Math.floor(Math.random() * 600);
 }
 
-let runAllUpdates = function() {
+let runAllUpdates = function(badguys) {
   updateAllBulletPositions();
-  checkAllCollisions(mainChar, mainChar.bullets, baddies);
+  checkAllCollisions(mainChar, mainChar.bullets, badguys);
   setInterval(() => {
     updateAllBulletPositions();
-    updateAllBaddies(baddies, mainChar);
-    checkAllCollisions(mainChar, mainChar.bullets, baddies);
+    updateAllBaddies(badguys, mainChar);
+    checkAllCollisions(mainChar, mainChar.bullets, badguys);
   }, 100);
 };
+
+function play() {
+  var audio = document.getElementById("audio");
+  audio.play();
+}
