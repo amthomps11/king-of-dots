@@ -54,8 +54,6 @@ body {
   background-color: green;
   background-image: url(images/circleGreen2.png);
   background-size: cover;
-  background-position-x: -1px;
-
   transition: top 0.1s, left 0.1s;
   transition-timing-function: linear;
   background-repeat: no-repeat;

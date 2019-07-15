@@ -5,6 +5,8 @@ const enemyTypes = {
   targeter: "targeter"
 };
 
+const enemyTypesArray = ["oscilator", "chaser", "chaotic"];
+
 function areTheyColliding(obj1, obj2) {
   if (
     (obj1 instanceof Enemy && obj2 instanceof Bullet) ||
@@ -103,16 +105,36 @@ function generateRandomPos() {
 }
 
 let runAllUpdates = function(badguys) {
+  let runWave;
+  let currentBadGuyIndex = 0;
   updateAllBulletPositions();
-  checkAllCollisions(mainChar, mainChar.bullets, badguys);
-  setInterval(() => {
+  checkAllCollisions(mainChar, mainChar.bullets, badguys[currentBadGuyIndex]);
+  runWave = setInterval(() => {
+    console.log(badguys[currentBadGuyIndex].length);
     updateAllBulletPositions();
-    updateAllBaddies(badguys, mainChar);
-    checkAllCollisions(mainChar, mainChar.bullets, badguys);
+    updateAllBaddies(badguys[currentBadGuyIndex], mainChar);
+    checkAllCollisions(mainChar, mainChar.bullets, badguys[currentBadGuyIndex]);
+    if (badguys[currentBadGuyIndex].length === 0) {
+      currentBadGuyIndex++;
+      renderAllEnemies(
+        badguys[currentBadGuyIndex],
+        enemyTypesArray[currentBadGuyIndex]
+      );
+      if (currentBadGuyIndex > badguys.length) {
+        clearInterval(runWave);
+      }
+    }
   }, 100);
 };
 
 function play() {
   var audio = document.getElementById("audio");
   audio.play();
+}
+
+function renderAllEnemies(baddies, type) {
+  for (let i = 0; i < baddies.length; i++) {
+    baddies[i].createEnemy(type);
+    // baddies[i].renderEnemy();
+  }
 }

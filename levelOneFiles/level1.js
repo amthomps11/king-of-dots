@@ -2,7 +2,7 @@ const arena = document.querySelector(".arena");
 const heroAttributes = new Vector(250, 250);
 const mainChar = new Hero(heroAttributes);
 
-const baddies3 = [];
+const baddies1 = [];
 
 const startingOscPostitions = [
   new Vector(0, 0),
@@ -21,10 +21,30 @@ const startingEndPositions = [
 for (let i = 0; i < 4; i++) {
   let enemyPos = startingOscPostitions[i];
   let badGuy = new Enemy(enemyPos);
-  badGuy.createEnemy("chaotic");
+  badGuy.setEndVector(startingEndPositions[i]);
+  badGuy.createEnemy("oscilator");
   badGuy.renderEnemy();
   badGuy.setTargets();
+  baddies1.push(badGuy);
+}
+
+const baddies2 = [];
+
+for (let i = 0; i < 4; i++) {
+  let enemyPos = startingOscPostitions[i];
+  let badGuy = new Enemy(enemyPos);
+  baddies2.push(badGuy);
+}
+
+const baddies3 = [];
+
+for (let i = 0; i < 4; i++) {
+  let enemyPos = startingOscPostitions[i];
+  let badGuy = new Enemy(enemyPos);
+
   baddies3.push(badGuy);
 }
 
-runAllUpdates(baddies3);
+const allThebadguys = [baddies1, baddies2, baddies3];
+
+runAllUpdates(allThebadguys);
