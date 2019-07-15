@@ -10,6 +10,7 @@ body {
   font-size: 8px;
   display: none;
   border: solid white 5px;
+  color: white;
   height: 300px;
   width: 500px;
   flex-direction: row;
@@ -28,6 +29,17 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 5em;
+}
+
+.subtitleText {
+  display: none;
+  color: white;
+  /* border: solid white 1px; */
+  height: 100px;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
 }
 
 .buttonWrapper {

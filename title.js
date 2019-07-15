@@ -1,5 +1,6 @@
 const colors = ["yellow", "blue", "green", "red", "white"];
-
+let theColorsAreCrazyNow = false;
+let theColorsAreBlinkingNow = false;
 const Dot = function(positionVector) {
   this.position = positionVector;
   this.div;
@@ -7,8 +8,12 @@ const Dot = function(positionVector) {
   this.createDot = function() {
     const tempDiv = document.createElement("DIV");
     tempDiv.classList.add("dots");
-    tempDiv.style.backgroundColor =
-      colors[Math.floor(Math.random() * colors.length)];
+    if (!theColorsAreCrazyNow) {
+      tempDiv.style.backgroundColor = "white";
+    } else {
+      tempDiv.style.backgroundColor =
+        colors[Math.floor(Math.random() * colors.length)];
+    }
     this.div = tempDiv;
     document.body.appendChild(this.div);
   };
@@ -92,10 +97,32 @@ setInterval(function() {
     generateYDot();
     i++;
   }
+  if (theColorsAreBlinkingNow === true) {
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].div.style.backgroundColor =
+        colors[Math.floor(Math.random() * colors.length)];
+    }
+  }
 
   moveDots();
 }, 1000);
 
 setTimeout(function() {
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].div.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+  }
+  theColorsAreCrazyNow = true;
+}, 7500);
+
+setTimeout(function() {
+  theColorsAreBlinkingNow = true;
+}, 22000);
+
+setTimeout(function() {
   document.querySelector(".menu").style.display = "flex";
 }, 36000);
+
+setTimeout(function() {
+  document.querySelector(".subtitleText").style.display = "flex";
+}, 40000);
