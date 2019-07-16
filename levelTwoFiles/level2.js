@@ -5,18 +5,6 @@ const mainChar = new Hero(heroAttributes);
 const baddies1 = [];
 
 const startingChaser = [
-  //   new Vector(0, 0),
-  //   new Vector(0, 50),
-  //   new Vector(0, 100),
-  //   new Vector(0, 150),
-  //   new Vector(0, 200),
-  //   new Vector(0, 250),
-  //   new Vector(0, 300),
-  //   new Vector(0, 350),
-  //   new Vector(0, 400),
-  //   new Vector(0, 450),
-  //   new Vector(0, 500),
-
   new Vector(50, 0),
   new Vector(100, 0),
   new Vector(150, 0),
@@ -87,8 +75,6 @@ const allThebadguys = [baddies1];
 runAllUpdates(allThebadguys);
 setInterval(function() {
   if (baddies1.length === 0) {
-    alert(
-      "You Win!. Are King Of the Dots. More levels coming soon in DLC for $100,000,000"
-    );
+    document.location.href = "../victoryScreenFiles/victory.html";
   }
 }, 100);
