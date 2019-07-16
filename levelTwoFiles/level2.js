@@ -87,6 +87,6 @@ const allThebadguys = [baddies1];
 runAllUpdates(allThebadguys);
 setInterval(function() {
   if (baddies1.length === 0) {
-    alert("More levels coming soon in DLC for $100,000,000");
+    alert("You Win! More levels coming soon in DLC for $100,000,000");
   }
 }, 100);

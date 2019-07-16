@@ -82,7 +82,6 @@ function updateHUD(HUD) {
 function checkAllCollisions(hero, allBullets, allBaddies) {
   for (let i = 0; i < allBaddies.length; i++) {
     if (areTheyColliding(hero, allBaddies[i])) {
-      console.log(hero.health);
       hero.health--;
       updateHUD(HUD);
     }
@@ -110,7 +109,6 @@ let runAllUpdates = function(badguys) {
   updateAllBulletPositions();
   checkAllCollisions(mainChar, mainChar.bullets, badguys[currentBadGuyIndex]);
   runWave = setInterval(() => {
-    console.log(badguys[currentBadGuyIndex].length);
     updateAllBulletPositions();
     updateAllBaddies(badguys[currentBadGuyIndex], mainChar);
     checkAllCollisions(mainChar, mainChar.bullets, badguys[currentBadGuyIndex]);

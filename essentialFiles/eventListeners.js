@@ -1,26 +1,35 @@
+//Multi Key Movement sourced from blerf and https://www.kirupa.com/html5/keyboard_events_in_javascript.htm
+
+const keys = [];
 document.body.addEventListener("keydown", function(evt) {
   const keyCode = evt.keyCode;
   const arrowKeys = [37, 38, 39, 40];
+  const WASD = [65, 87, 68, 83];
+  keys[keyCode] = true;
   if (arrowKeys.includes(keyCode)) {
     evt.preventDefault();
   }
-  switch (keyCode) {
-    case 37:
-    case 65:
-      mainChar.moveLeft();
-      break;
-    case 38:
-    case 87:
-      mainChar.moveUp();
-      break;
-    case 39:
-    case 68:
-      mainChar.moveRight();
-      break;
-    case 40:
-    case 83:
-      mainChar.moveDown();
-      break;
+  if (keys[37]) {
+    mainChar.moveLeft();
+  }
+  if (keys[38]) {
+    mainChar.moveUp();
+  }
+  if (keys[39]) {
+    mainChar.moveRight();
+  }
+  if (keys[40]) {
+    mainChar.moveDown();
+  }
+});
+
+document.body.addEventListener("keyup", function(evt) {
+  const keyCode = evt.keyCode;
+  const arrowKeys = [37, 38, 39, 40];
+  const WASD = [65, 87, 68, 83];
+  keys[keyCode] = false;
+  if (arrowKeys.includes(keyCode)) {
+    evt.preventDefault();
   }
 });
 
