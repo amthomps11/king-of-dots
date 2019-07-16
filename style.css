@@ -77,15 +77,16 @@ body {
 .dots {
   width: 50px;
   height: 50px;
-  /* border-radius: 50%; */
-  /* border: solid blue 1px; */
-  background-color: white;
-  position: relative;
-  transition: top 0.5s, left 0.5s;
+  border-radius: 50%;
+  /* background-color: white; */
+  position: absolute;
+  background-size: cover;
+  transition: top 0.1s, left 0.1s;
   transition-timing-function: linear;
   background-repeat: no-repeat;
-  margin: 0;
+  margin: 1px;
   padding: 0;
+  z-index: -1;
 }
 
 .textBox {
