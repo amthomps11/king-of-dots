@@ -101,3 +101,8 @@ body {
   border: solid white 2px;
   padding: 5px;
 }
+
+embed {
+  width: 0px;
+  height: 0px;
+}

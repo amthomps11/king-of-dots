@@ -5,18 +5,6 @@ const mainChar = new Hero(heroAttributes);
 const baddies1 = [];
 
 const startingChaser = [
-  //   new Vector(0, 0),
-  //   new Vector(0, 50),
-  //   new Vector(0, 100),
-  //   new Vector(0, 150),
-  //   new Vector(0, 200),
-  //   new Vector(0, 250),
-  //   new Vector(0, 300),
-  //   new Vector(0, 350),
-  //   new Vector(0, 400),
-  //   new Vector(0, 450),
-  //   new Vector(0, 500),
-
   new Vector(50, 0),
   new Vector(100, 0),
   new Vector(150, 0),
