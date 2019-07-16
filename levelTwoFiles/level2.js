@@ -85,3 +85,8 @@ for (let i = 0; i < startingOscPostitions.length; i++) {
 const allThebadguys = [baddies1];
 
 runAllUpdates(allThebadguys);
+setInterval(function() {
+  if (baddies1.length === 0) {
+    alert("More levels coming soon in DLC for $100,000,000");
+  }
+}, 100);
