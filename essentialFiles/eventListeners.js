@@ -9,16 +9,16 @@ document.body.addEventListener("keydown", function(evt) {
   if (arrowKeys.includes(keyCode)) {
     evt.preventDefault();
   }
-  if (keys[37]) {
+  if (keys[37] || keys[65]) {
     mainChar.moveLeft();
   }
-  if (keys[38]) {
+  if (keys[38] || keys[87]) {
     mainChar.moveUp();
   }
-  if (keys[39]) {
+  if (keys[39] || keys[68]) {
     mainChar.moveRight();
   }
-  if (keys[40]) {
+  if (keys[40] || keys[83]) {
     mainChar.moveDown();
   }
 });
