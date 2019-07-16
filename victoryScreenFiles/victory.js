@@ -145,3 +145,7 @@ setTimeout(function() {
     bounceAllDots();
   }, 500);
 }, 100);
+
+document.addEventListener("click", function() {
+  document.location.href = "../index.html";
+});
