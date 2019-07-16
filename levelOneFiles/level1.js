@@ -50,6 +50,6 @@ const allThebadguys = [baddies1, baddies2, baddies3];
 runAllUpdates(allThebadguys);
 setInterval(function() {
   if (baddies3.length === 0) {
-    document.location.href = "../levelTwoFiles/level2.html";
+    document.location.href = "../level1CutScene.html";
   }
-});
+}, 100);

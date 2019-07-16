@@ -8,7 +8,7 @@ body {
   font-family: "Press Start 2P", cursive;
   background-color: rgb(108, 113, 122);
   font-size: 8px;
-  display: none;
+  display: flex;
   border: solid white 5px;
   color: white;
   height: 300px;
