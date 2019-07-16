@@ -87,7 +87,8 @@ const allThebadguys = [baddies1];
 runAllUpdates(allThebadguys);
 setInterval(function() {
   if (baddies1.length === 0) {
-
-    alert("More levels coming soon in DLC for $100,000,000");
-
+    alert(
+      "You Win!. Are King Of the Dots. More levels coming soon in DLC for $100,000,000"
+    );
+  }
 }, 100);
